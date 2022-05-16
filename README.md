@@ -6,7 +6,7 @@ Kerangka untuk pembuatan native php dengan metode mvc (model, view, controller)
 
 - PHP 8.x atau lebih
 - composer
-- Terminal && Command Prompt
+- Terminal atau Command Prompt
 
 ## Instalasi
 
