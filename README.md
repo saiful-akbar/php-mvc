@@ -1,6 +1,12 @@
 # PHP MVC
 
-Kerangka untuk pembuatan php native dengan metode mvc (model, view, controller)
+Kerangka untuk pembuatan native php dengan metode mvc (model, view, controller)
+
+# Persyaratan
+
+- PHP 8.x atau lebih
+- composer
+- Terminal && Command Prompt
 
 # Instalasi
 
@@ -9,5 +15,5 @@ git clone https://github.com/saiful-akbar/php-mvc.git
 ```
 
 ```bash
-composer install
+cd php-mvc && composer install
 ```
