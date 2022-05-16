@@ -1,0 +1,1 @@
+<h1>Wlcome PHP MVC v<?= config('app.version') ?></h1>

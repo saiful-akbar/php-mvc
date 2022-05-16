@@ -1,0 +1,19 @@
+{
+  "name": "saiful-akbar/php-mvc",
+  "description": "php mvc",
+  "autoload": {
+    "psr-4": {
+      "Src\\": "src/"
+    },
+    "files": [
+      "src/Helpers.php"
+    ]
+  },
+  "authors": [
+    {
+      "name": "Saiful Akbar",
+      "email": "saifulakbar.dev@gmail.com"
+    }
+  ],
+  "require": {}
+}

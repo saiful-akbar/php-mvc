@@ -1,0 +1,21 @@
+{
+  "name": "php-mvc",
+  "version": "1.0.0",
+  "description": "php mvc",
+  "author": "saiful-akbar",
+  "license": "ISC",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saiful-akbar/php-mvc.git"
+  },
+  "keywords": [
+    "php",
+    "mvc"
+  ],
+  "bugs": {
+    "url": "https://github.com/saiful-akbar/php-mvc/issues"
+  }
+}
