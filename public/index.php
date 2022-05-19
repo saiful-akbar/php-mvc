@@ -9,5 +9,8 @@ if (!file_exists(__DIR__ . '/../vendor/autoload.php')) {
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-$app = new Src\Core\Application();
+use Src\Http\Request;
+use Src\Core\Application;
+
+$app = new Application();
 $app->routing();

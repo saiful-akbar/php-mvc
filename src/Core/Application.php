@@ -24,13 +24,6 @@ class Application
   private string $method = 'index';
 
   /**
-   * Default params
-   * 
-   * @var array
-   */
-  private array|object $params = [];
-
-  /**
    * Default route
    * 
    * @var string|array
@@ -73,20 +66,6 @@ class Application
   }
 
   /**
-   * Set parameter pada method
-   * 
-   * @param array $params
-   * 
-   * @return void
-   */
-  private function setParams(array $params = []): void
-  {
-    if (!empty($params)) {
-      $this->params = $params;
-    }
-  }
-
-  /**
    * Buat routing aplikasi
    * 
    * @return void
@@ -112,10 +91,6 @@ class Application
     // Set method
     $this->setMethod($this->route[1]);
     unset($this->route[1]);
-
-    // Set parameter
-    // $this->setParams(array_values($this->route));
-    // unset($this->route);
 
     // Jalankan controller & method setrta kirimkan parameter-nya jika ada.
     call_user_func([$this->controller, $this->method], new Request());
