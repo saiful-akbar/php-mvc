@@ -7,6 +7,6 @@ class UserController extends Controller
 {
   public function index(Request $request)
   {
-    return view('user', ['title' => 'User']);
+    return view(view: 'user', data: ['title' => 'User']);
   }
 }

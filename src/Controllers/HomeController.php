@@ -12,6 +12,10 @@ class HomeController extends Controller
    */
   public function index(Request $request): mixed
   {
-    return layout('app', 'home', ['title' => 'Home']);
+    return layout(
+      layout: 'layouts.app',
+      content: 'home',
+      data: ['title' => 'Home'],
+    );
   }
 }

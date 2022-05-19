@@ -32,8 +32,8 @@ if (!function_exists('config')) {
   function config(string $key, mixed $default = null): mixed
   {
     $keys = trim($key, '/');
-    $keys = str_replace('/', '.', $keys);
-    $keys = explode('.', $keys);
+    $keys = str_replace('.', '/', $keys);
+    $keys = explode('/', $keys);
 
     $config = require __DIR__ . "/../config/{$keys[0]}.php";
     unset($keys[0]);
@@ -57,9 +57,11 @@ if (!function_exists('view')) {
    */
   function view(string $view, array $data = []): mixed
   {
+    $viewPath = str_replace('.', '/', $view);
+
     extract($data);
 
-    return require __DIR__ . '/../views/' . trim($view, '/') . '.php';
+    return require __DIR__ . "/../views/{$viewPath}.php";
   }
 }
 
@@ -77,9 +79,9 @@ if (!function_exists('layout')) {
    */
   function layout(string $layout, string $content, array $data = []): mixed
   {
-    $data['content'] = $content;
+    $data['content'] = str_replace('.', '/', $content);
 
-    return view("layouts/{$layout}", $data);
+    return view($layout, $data);
   }
 }
 

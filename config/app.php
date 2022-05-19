@@ -9,7 +9,7 @@ return [
   /**
    * Aplikasi url
    */
-  'url' => 'http://localhost/latihan/php-mvc',
+  'url' => 'http://localhost/php-mvc',
 
   /**
    * Aplikasi versi
