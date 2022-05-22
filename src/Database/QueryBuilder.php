@@ -46,6 +46,13 @@ class QueryBuilder
   protected ?string $sql;
 
   /**
+   * Value untuk binding data
+   * 
+   * @var array|null
+   */
+  private ?array $bindValue = null;
+
+  /**
    * Set properti & jalankan koneksi database
    */
   public function __construct()
@@ -144,8 +151,12 @@ class QueryBuilder
    * 
    * @return QueryBuilder
    */
-  public function bind(array $params, ?int $type = null): QueryBuilder
+  public function bind(?array $params = null, ?int $type = null): QueryBuilder
   {
+    if (is_null($params)) {
+      $params = $this->bindValue;
+    }
+
     foreach ($params as $key => $value) {
       switch ($value) {
         case is_int($value):
@@ -256,6 +267,11 @@ class QueryBuilder
   {
     $this->limit(1);
     $this->query($this->sql);
+
+    if (!is_null($this->bindValue) && is_array($this->bindValue)) {
+      $this->bind($this->bindValue);
+    }
+
     $this->execute();
 
     return $this->stmt->fetch();
@@ -269,6 +285,11 @@ class QueryBuilder
   public function get(): array
   {
     $this->query($this->sql);
+
+    if (!is_null($this->bindValue) && is_array($this->bindValue)) {
+      $this->bind($this->bindValue);
+    }
+
     $this->execute();
 
     return $this->stmt->fetchAll();
@@ -281,15 +302,34 @@ class QueryBuilder
    * 
    * @return void
    */
-  public function insert(array $params): void
+  public function insert(array $data): void
   {
-    $columns = implode(', ', array_keys($params));
-    $values = ':' . implode(', :', array_keys($params));
+    $columns = implode(', ', array_keys($data));
+    $values = ':' . implode(', :', array_keys($data));
 
     $this->sql = "INSERT INTO {$this->table} ($columns) VALUES ($values)";
 
     $this->query($this->sql);
-    $this->bind($params);
+    $this->bind($data);
     $this->execute();
+  }
+
+  /**
+   * Query where full text search
+   * 
+   * @param array|string $columns
+   * @param string $value
+   * 
+   * @return QueryBuilder
+   */
+  public function whereFullText(array|string $columns, string $value): QueryBuilder
+  {
+    $columns = is_array($columns) ? implode(', ', $columns) : $columns;
+    $columns = htmlspecialchars(trim($columns));
+
+    $this->sql = "SELECT * FROM {$this->table} WHERE MATCH({$columns}) AGAINST(:value IN NATURAL LANGUAGE MODE)";
+    $this->bindValue = ['value' => $value];
+
+    return $this;
   }
 }
