@@ -17,10 +17,13 @@ class Request
   /**
    * Http input request
    * 
-   * @var object
+   * @var object|null
    */
-  public object $input;
+  public ?object $input = null;
 
+  /**
+   * Set method dan input
+   */
   public function __construct()
   {
     // Set mthod
