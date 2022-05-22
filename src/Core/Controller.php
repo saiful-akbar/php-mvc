@@ -18,7 +18,7 @@ class Controller
    */
   protected function view(string $view, array $data = []): mixed
   {
-    return view($view, $data);
+    return view(view: $view, data: $data);
   }
 
   /**
@@ -33,6 +33,10 @@ class Controller
    */
   protected function layout(string $layout, string $content, array $data): mixed
   {
-    return layout($layout, $content, $data);
+    return layout(
+      view: $layout,
+      content: $content,
+      data: $data,
+    );
   }
 }

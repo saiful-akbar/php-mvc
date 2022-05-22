@@ -14,21 +14,21 @@ class Application
    * 
    * @var string
    */
-  private string|object $controller = 'HomeController';
+  protected string|object $controller = 'HomeController';
 
   /**
    * Default method
    * 
    * @var string
    */
-  private string $method = 'index';
+  protected string $method = 'index';
 
   /**
    * Default route
    * 
    * @var string|array
    */
-  private string|array $route = 'home/index';
+  protected string|array $route = 'home/index';
 
   /**
    * Set controller
@@ -37,7 +37,7 @@ class Application
    * 
    * @return void
    */
-  private function setController(string $controller): void
+  protected function setController(string $controller): void
   {
     $controller = trim(ucfirst($controller)) . 'Controller';
 
@@ -58,7 +58,7 @@ class Application
    * 
    * @return void
    */
-  private function setMethod(string $method): void
+  protected function setMethod(string $method): void
   {
     if (method_exists($this->controller, $method)) {
       $this->method = $method;

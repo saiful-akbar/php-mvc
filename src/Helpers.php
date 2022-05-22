@@ -77,11 +77,11 @@ if (!function_exists('layout')) {
    * 
    * @return void
    */
-  function layout(string $layout, string $content, array $data = []): mixed
+  function layout(string $view, string $content, array $data = []): mixed
   {
     $data['content'] = str_replace('.', '/', $content);
 
-    return view($layout, $data);
+    return view($view, $data);
   }
 }
 
@@ -168,15 +168,23 @@ if (!function_exists('url')) {
 }
 
 if (!function_exists('e')) {
+
   /**
-   * Clear print dengan htmlspecialchars
+   * Clear print
    * 
    * @param mixed $value
+   * @param string|null $character
    * 
    * @return void
    */
-  function e(mixed $value): void
+  function e(mixed $value, ?string $character = null): void
   {
-    echo htmlspecialchars(trim($value));
+    if (!is_null($character)) {
+      $value = trim($value, $character);
+    } else {
+      $value = trim($value);
+    }
+
+    echo htmlspecialchars($value);
   }
 }

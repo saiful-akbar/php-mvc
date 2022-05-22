@@ -5,6 +5,7 @@ use Src\Http\Request;
 
 class HomeController extends Controller
 {
+
   /**
    * View home page
    * 
@@ -13,7 +14,7 @@ class HomeController extends Controller
   public function index(Request $request): mixed
   {
     return layout(
-      layout: 'layouts.app',
+      view: 'layouts.app',
       content: 'home',
       data: ['title' => 'Home'],
     );

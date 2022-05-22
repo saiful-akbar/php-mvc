@@ -7,6 +7,11 @@ return [
   'name' => 'PHP MVC',
 
   /**
+   * Deskripsi aplikasi
+   */
+  'description' => 'Framework built with native php using mvc metode method.',
+
+  /**
    * Aplikasi url
    */
   'url' => 'http://localhost/php-mvc',
